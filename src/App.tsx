@@ -3,7 +3,7 @@ import TodoForm from './components/AddTodoForm/AddTodoForm';
 import { TodoList } from './components/TodoList';
 
 import todosFromServer from './api/todos';
-import { Todo } from './api/types';
+import { NewTodoType, Todo } from './api/types';
 import { getUsersById } from './servers/user';
 import { useState } from 'react';
 
@@ -21,10 +21,13 @@ const maxPostId = (posts: Todo[]) => {
 export const App = () => {
   const [posts, setPosts] = useState<Todo[]>(initialPost);
 
-  const addPosts = ({ id, ...data }: Todo) => {
+  const addPosts = ({ title, userId }: NewTodoType) => {
     const newPosts = {
       id: maxPostId(posts),
-      ...data,
+      title,
+      completed: false,
+      userId,
+      user: getUsersById(userId),
     };
 
     setPosts(currentPosts => [...currentPosts, newPosts]);

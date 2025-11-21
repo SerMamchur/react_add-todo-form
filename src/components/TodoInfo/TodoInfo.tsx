@@ -1,4 +1,3 @@
-// import { use } from 'chai';
 import { Todo } from '../../api/types';
 import React from 'react';
 import { UserInfo } from '../UserInfo';
@@ -7,8 +6,6 @@ import classNames from 'classnames';
 type Props = {
   todo: Todo;
 };
-
-// const [completed, setCompleated] = useState(false);
 
 export const TodoInfo: React.FC<Props> = ({ todo }) => {
   return (

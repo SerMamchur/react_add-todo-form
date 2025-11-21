@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
 import usersFromServer from '../../api/users';
-import { Todo } from '../../api/types';
-import { getUsersById } from '../../servers/user';
-// import todosFromServer from './api/todos';
+import { NewTodoType } from '../../api/types';
 
 type Props = {
-  onSubmit: (post: Todo) => void;
+  onSubmit: (post: NewTodoType) => void;
 };
 
 export const TodoForm: React.FC<Props> = ({ onSubmit }) => {
@@ -33,11 +31,8 @@ export const TodoForm: React.FC<Props> = ({ onSubmit }) => {
     }
 
     onSubmit({
-      id: 0,
       title,
       userId,
-      completed: false,
-      user: getUsersById(userId),
     });
 
     reset();

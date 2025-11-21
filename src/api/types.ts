@@ -12,3 +12,8 @@ export type User = {
   username: string;
   email: string;
 };
+
+export type NewTodoType = {
+  title: string;
+  userId: number;
+};
