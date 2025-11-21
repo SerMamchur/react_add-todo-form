@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import usersFromServer from '../../api/users';
-import { NewTodoType } from '../../api/types';
+// import usersFromServer from '../../api/users';
+import { NewTodoType, User } from '../../api/types';
 
 type Props = {
   onSubmit: (post: NewTodoType) => void;
+  users: User[];
 };
 
-export const TodoForm: React.FC<Props> = ({ onSubmit }) => {
+export const TodoForm: React.FC<Props> = ({ onSubmit, users }) => {
   // #region useStete
   const [userId, setUserId] = useState(0);
   const [title, setTitle] = useState('');
@@ -80,7 +81,7 @@ export const TodoForm: React.FC<Props> = ({ onSubmit }) => {
             <option value="0" disabled>
               Choose a user
             </option>
-            {usersFromServer.map(user => (
+            {users.map(user => (
               <option value={user.id} key={user.id}>
                 {user.name}
               </option>

@@ -2,6 +2,7 @@ import './App.scss';
 import TodoForm from './components/AddTodoForm/AddTodoForm';
 import { TodoList } from './components/TodoList';
 
+import usersFromServer from './api/users';
 import todosFromServer from './api/todos';
 import { NewTodoType, Todo } from './api/types';
 import { getUsersById } from './servers/user';
@@ -36,7 +37,7 @@ export const App = () => {
   return (
     <div className="App">
       <h1>Add todo form</h1>
-      <TodoForm onSubmit={addPosts} />
+      <TodoForm onSubmit={addPosts} users={usersFromServer} />
 
       <section className="TodoList">
         <TodoList todos={posts} />
